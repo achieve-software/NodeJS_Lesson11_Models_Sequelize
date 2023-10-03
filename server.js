@@ -12,44 +12,10 @@ app.use(express.json())
 
 app.all("/", (req,res) =>{
 
-    res.send("welcome")
+    res.send("welcommmme")
 })
 
-const {Sequelize,DataTypes}= require("sequelize")
-// const sequelize=new Sequelize("sqlite:./db.sqlite3")
-const sequelize=new Sequelize("sqlite:"+ (process.env.SQLITE || "./db.sqlite3"))
-
-const Todo = sequelize.define("todo", {
-    id:{
-        type:DataTypes.INTEGER,
-        allowNull:false,
-        unique:true,
-        field_name: "custom_column_name",
-        comment:"Description",
-        primaryKey:true,
-        autoIncrement:true
-    },
-
-    title:{
-        type:DataTypes.STRING(64),
-        allowNull:false,
-    },
-    description: DataTypes.TEXT,
-    priority:{
-        type:DataTypes.TINYINT,
-        allowNull:false,
-        defaultValue:0,
-    },
-    isDone:{
-        type:DataTypes.BOOLEAN,
-        allowNull:false,
-        defaultValue:false
-    }
-
-})
-
-
-
+app.use(require("./todo.router"))
 
 
 
