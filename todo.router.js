@@ -66,6 +66,8 @@ router.put('/:id', async (req, res) => {
 // DELETE:
 router.delete('/:id', async (req, res) => {
 
+    
+
     // Model.destroy({ filter })
     const isDeleted = await Todo.destroy({ where: { id: req.params.id } })
     // isDeleted return: 1 or 0
